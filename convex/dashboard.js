@@ -1,5 +1,5 @@
 import { internal } from "./_generated/api";
-import { mutation, query } from "./_generated/server";
+import { query } from "./_generated/server";
 import { v } from "convex/values";
 
 // Get event with detailed stats for dashboard
@@ -40,7 +40,7 @@ export const getEventDashboard = query({
     // Calculate revenue for paid events
     let totalRevenue = 0;
     if (event.ticketType === "paid" && event.ticketPrice) {
-      totalRevenue = checkedInCount * event.ticketPrice;
+      totalRevenue = totalRegistrations * event.ticketPrice;
     }
 
     // Calculate check-in rate

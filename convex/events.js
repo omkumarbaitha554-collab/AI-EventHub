@@ -140,8 +140,8 @@ export const deleteEvent = mutation({
     // Delete the event
     await ctx.db.delete(args.eventId);
 
-    // Update free event count if it was a free event
-    if (event.ticketType === "free" && user.freeEventsCreated > 0) {
+    // Update free event count
+    if (user.freeEventsCreated > 0) {
       await ctx.db.patch(user._id, {
         freeEventsCreated: user.freeEventsCreated - 1,
       });
